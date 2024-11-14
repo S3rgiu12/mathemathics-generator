@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exerciții de Matematică</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: left;
+            margin: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        .section {
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Exerciții de Matematică</h1>
+
+    <div class="section">
+        <h2>Număr de cifre: 2</h2>
+        <button onclick="generateExercises(2)">Generează</button>
+        <div id="exercises-2"></div>
+    </div>
+
+    <div class="section">
+        <h2>Număr de cifre: 3</h2>
+        <button onclick="generateExercises(3)">Generează</button>
+        <div id="exercises-3"></div>
+    </div>
+
+    <div class="section">
+        <h2>Număr de cifre: 4</h2>
+        <button onclick="generateExercises(4)">Generează</button>
+        <div id="exercises-4"></div>
+    </div>
+
+    <script>
+        function generateNumber(digits) {
+            const min = Math.pow(10, digits - 1);
+            const max = Math.pow(10, digits) - 1;
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function generateExercises(digits) {
+            const number = generateNumber(digits);
+            const additionNumber = generateNumber(digits);
+            const subtractionNumber = generateNumber(digits);
+            const multiplicationNumber = Math.floor(Math.random() * 9) + 1;
+            const divisionNumber = Math.floor(Math.random() * 9) + 1;
+
+            const exercises = `
+                <p>${number} + ${additionNumber} = ?</p>
+                <p>${number} - ${subtractionNumber} = ?</p>
+                <p>${number} * ${multiplicationNumber} = ?</p>
+                <p>${number} / ${divisionNumber} = ?</p>
+            `;
+
+            document.getElementById(`exercises-${digits}`).innerHTML = exercises;
+        }
+    </script>
+
+</body>
+</html>
